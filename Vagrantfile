@@ -53,4 +53,18 @@ Vagrant.configure(2) do |config|
   end
 
 
+  config.vm.define "box2" do |box2_config|
+    box2_config.vm.box = "bento/centos-7.3"
+    box2_config.vm.hostname = "box1.local"
+    box2_config.vm.network "private_network", ip: "10.0.0.12", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
+
+    box2_config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.memory = "1024"
+      vb.cpus = 2
+      vb.name = "centos7_box2"
+    end
+
+    box2_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
+  end
 end
