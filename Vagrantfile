@@ -55,7 +55,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "box2" do |box2_config|
     box2_config.vm.box = "bento/centos-7.3"
-    box2_config.vm.hostname = "box1.local"
+    box2_config.vm.hostname = "box2.local"
     box2_config.vm.network "private_network", ip: "10.0.0.12", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
     box2_config.vm.provider "virtualbox" do |vb|
